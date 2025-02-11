@@ -11,3 +11,7 @@ def specific(request):
 
 # def article(request, article_id):
 #     return render(request, 'blog/article.html', {'article_id': article_id})
+
+def getResponse(request):
+    userMessage = request.GET.get('userMessage') # get the user's message from the query string from index.html
+    return HttpResponse(userMessage)
