@@ -6,7 +6,13 @@ from django.http import HttpResponse
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
 
-bot = ChatBot('chat',read_only=False,logic_adapter=['chatterbot.logic.BestMatch']) # initialize the chatbot 
+bot = ChatBot('chat',read_only=False,logic_adapters=[{
+
+        'import_path':'chatterbot.logic.BestMatch',
+        'default_response':"I am sorry, I don't understand.",
+        'maximum_similarity_threshold':0.85 ,
+
+}]) # initialize the chatbot 
 
 list_to_train = [
     'Hi',
@@ -20,8 +26,8 @@ list_to_train = [
     'What are you doing today?',
     'I am reading a book',
     'Can you recommend any books?',
-    'Yes, I can recommend some books'
-    'Here are some books to read: 1. The Great Gatsby, 2. To Kill a Mockingbird, 3. 1984'
+    'Yes, I can recommend some books' ,
+    'Here are some books to read: 1. The Great Gatsby, 2. To Kill a Mockingbird, 3. 1984',
     'What is the capital of France?',
     'The capital of France is Paris',
     'What is the population of Paris?',
