@@ -66,4 +66,7 @@ def specific(request):
 
 def getResponse(request):
     userMessage = request.GET.get('userMessage') # get the user's message from the query string from index.html
-    return HttpResponse(userMessage)
+    chatResponse =str(bot.get_response(userMessage))
+    
+
+    return HttpResponse(chatResponse) # return the chatbot's response to the user
